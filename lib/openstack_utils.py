@@ -71,10 +71,10 @@ def creat_flavor():
     if not conn.compute.find_flavor(flavor_name):
         flavor = {
             'name': flavor_name,
-            'disk': 1,
+            'disk': 10,
             'is_public': True,
-            'ram': 1024,
-            'vcpus': 1
+            'ram': 2048,
+            'vcpus': 2
         }
         conn.compute.create_flavor(**flavor)
 
@@ -92,7 +92,9 @@ def import_image(image_path, image_name):
         'data': open(image_path, 'rb') 
         # 'Location' : 'file://home/ubuntu/demo/os-setup/cirros-0.4.0-x86_64-disk.img'
     }
-    image = conn.image.upload_image(**image_attrs)
+    image = conn.image.find_image(image_name)
+    if not image:
+        image = conn.image.upload_image(**image_attrs)
     activeFlag = False
     i = 1
     while(i < 10):

@@ -30,6 +30,8 @@ def render_openstack_cloud_files():
 if __name__ == '__main__':
     render_openstack_cloud_files()
     from lib import openstack_utils
+    openstack_utils.create_public_network()
     openstack_utils.create_private_network()
+    openstack_utils.create_router()
     openstack_utils.creat_flavor()
     openstack_utils.import_image(image,image_name)
