@@ -1,0 +1,11 @@
+clouds:
+ openstack:
+   region_name: RegionOne
+   auth:
+     user_domain_name: "admin_domain"
+     username: 'admin'
+     password: '{{ admin_password }}'
+     project_name: 'admin'
+     project-domain-name: "admin_domain"
+     auth_url: 'http://{{ keystone_ip }}:5000/v3'
+   identity_api_version: 3
